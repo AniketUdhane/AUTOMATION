@@ -40,17 +40,24 @@ pipeline {
 
                     // Pass variables as parameters to build job
                     build job: 'SmokeTest_Toaster_Execution', parameters: [
-                        string(name: 'AUTH_TYPE', value: params.KEYCLOAK_AUTH_TYPE),
+                        string(name: 'BUILD_VERSION_CODE', value: params.BUILD_VERSION_CODE),
+                        string(name: 'WCHILL_BUILD', value: params.WCHILL_BUILD),
                         string(name: 'WINDCHILL_URL', value: params.KEYCLOAK_URL),
+                        string(name: 'RADAR_VERSION', value: params.RADAR_VERSION),
+                        string(name: 'CATALOG_VERSION', value: params.CATALOG_VERSION),
+                        string(name: 'DAVIS_VERSION', value: params.DAVIS_VERSION),
+                        string(name: 'AUTH_TYPE', value: params.KEYCLOAK_AUTH_TYPE),
                         string(name: 'USERNAME', value: params.KEYCLOAK_USERNAME),
                         password(name: 'PASSWORD', value: env.KEYCLOAK_PASSWORD),
                         string(name: 'ADMIN_USERNAME',value: params.KEYCLOAK_ADMIN_USERNAME),
-                        password(name: 'ADMIN_PASSWORD', value; env.KEYCLOAK_ADMIN_PASSWORD)
+                        password(name: 'ADMIN_PASSWORD', value; env.KEYCLOAK_ADMIN_PASSWORD),
+                        string(name: 'HECTOR_RESULT_DEV_BUILD', value: params.HECTOR_RESULT_DEV_BUILD),
+                        string(name: 'HECTOR_PROJECT', value: params.HECTOR_PROJECT)
                     ]
             
         }
         }
-        stage('Trigger Keycloak Run') {
+        stage('Trigger Azure-AD Run') {
             steps {
                     // Create variables from parameters
                     // def AUTH_TYPE = params.KEYCLOAK_AUTH_TYPE
@@ -61,12 +68,19 @@ pipeline {
 
                     // Pass variables as parameters to build job
                     build job: 'SmokeTest_Toaster_Execution', parameters: [
-                        string(name: 'AUTH_TYPE', value: params.KEYCLOAK_AUTH_TYPE),
+                        string(name: 'BUILD_VERSION_CODE', value: params.BUILD_VERSION_CODE),
+                        string(name: 'WCHILL_BUILD', value: params.WCHILL_BUILD),
                         string(name: 'WINDCHILL_URL', value: params.KEYCLOAK_URL),
+                        string(name: 'RADAR_VERSION', value: params.RADAR_VERSION),
+                        string(name: 'CATALOG_VERSION', value: params.CATALOG_VERSION),
+                        string(name: 'DAVIS_VERSION', value: params.DAVIS_VERSION),
+                        string(name: 'AUTH_TYPE', value: params.KEYCLOAK_AUTH_TYPE),
                         string(name: 'USERNAME', value: params.KEYCLOAK_USERNAME),
                         password(name: 'PASSWORD', value: env.KEYCLOAK_PASSWORD),
                         string(name: 'ADMIN_USERNAME',value: params.KEYCLOAK_ADMIN_USERNAME),
-                        password(name: 'ADMIN_PASSWORD', value; env.KEYCLOAK_ADMIN_PASSWORD)
+                        password(name: 'ADMIN_PASSWORD', value; env.KEYCLOAK_ADMIN_PASSWORD),
+                        string(name: 'HECTOR_RESULT_DEV_BUILD', value: params.HECTOR_RESULT_DEV_BUILD),
+                        string(name: 'HECTOR_PROJECT', value: params.HECTOR_PROJECT)
                     ]
             
         }
